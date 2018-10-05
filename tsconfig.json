@@ -1,0 +1,41 @@
+{
+  "extends": "./config/tsconfig.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "strict": true,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "charset": "utf8",
+    "allowJs": false,
+    "pretty": true,
+    "noEmitOnError": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "strictPropertyInitialization": false,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "inlineSourceMap": true,
+    "importHelpers": true,
+    "noImplicitThis": false
+  },
+  "include": [
+    "index.ts",
+    "app/**/*.ts",
+    "config/**/*.ts",
+    "mock/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "public",
+    "app/web",
+    "app/public",
+    "app/view",
+    "node_modules*"
+  ]
+}

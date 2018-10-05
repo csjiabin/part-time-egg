@@ -1,0 +1,52 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "no-console": [
+      true,
+      "dir",
+      "log",
+      "error",
+      "warn"
+    ],
+    "space-before-function-paren": false,
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "adjacent-overload-signatures": true,
+    "member-access": [
+      false
+    ],
+    "member-ordering": [
+      true,
+      {
+        "order": "fields-first"
+      }
+    ],
+    "object-literal-sort-keys": false,
+    "max-classes-per-file": [
+      true,
+      10
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-trailing-underscore",
+      "allow-pascal-case",
+      "allow-snake-case"
+    ],
+    "align": [true, "statements"],
+    "curly": false,
+    "eofline": false,
+    "trailing-comma": false,
+    "noImplicitThis": false
+  }
+}
+
