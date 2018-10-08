@@ -20,9 +20,9 @@ export interface Job extends Document {
   fax?: string;
   contact_address?: string;
   email?: string;
-  education?: string;
+  education?: number;
   gender?: number;
-  position_nature?: string;
+  position_nature?: number;
   language_requirement?: string;
   work_address?: string;
   reference_reward?: string;
@@ -55,10 +55,12 @@ export default (app) => {
     fax: { type: String },
     contact_address: { type: String },
     email: { type: String },
-    // 职位基本要求
-    education: { type: String },
-    gender: { type: Number },
-    position_nature: { type: String },
+    /* 职位基本要求 */
+    // 1 小学 2 初中 3 高中 4 中专 5 大专 6 本科 7 硕士研究生 8 博士研究生
+    education: { type: Number, default: 0 },
+    gender: { type: Number, default: 2 },
+    // 1全职 2兼职 3实习 4临时
+    position_nature: { type: Number, default: 1 },
     language_requirement: { type: String },
     work_address: { type: String },
     reference_reward: { type: String },

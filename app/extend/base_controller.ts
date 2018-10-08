@@ -1,10 +1,10 @@
-import { Controller } from "egg";
+import { Controller } from 'egg';
 export default class BaseController extends Controller {
-  request:any = this.ctx.request;
+  request: any = this.ctx.request;
   body = this.ctx.request.body;
-  params = this.ctx.params
-  query = this.ctx.query
-  queries = this.ctx.queries
+  params = this.ctx.params;
+  query = this.ctx.query;
+  queries = this.ctx.queries;
   get user() {
     return this.ctx.session.user;
   }
@@ -12,7 +12,7 @@ export default class BaseController extends Controller {
   success(data?: any, message?: string) {
     this.ctx.body = {
       success: true,
-      message: message || "request successfully!",
+      message: message || 'request successfully!',
       data
     };
   }
@@ -24,7 +24,7 @@ export default class BaseController extends Controller {
     };
   }
   notFound(msg) {
-    msg = msg || "not found";
+    msg = msg || 'not found';
     this.ctx.throw(404, msg);
   }
 }

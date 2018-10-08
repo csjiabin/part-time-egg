@@ -1,5 +1,5 @@
-import { Service } from "egg";
-import { Company } from "../model/company";
+import { Service } from 'egg';
+import { Company } from '../model/company';
 export default class CompanyService extends Service {
   public async find(option: Company): Promise<Company> {
     const { Company } = this.ctx.model;

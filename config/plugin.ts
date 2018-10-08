@@ -1,4 +1,4 @@
-import { EggPlugin } from "egg";
+import { EggPlugin } from 'egg';
 
 const plugin: EggPlugin = {
   // static: true,
@@ -8,23 +8,23 @@ const plugin: EggPlugin = {
   // },
   mongoose: {
     enable: true,
-    package: "egg-mongoose"
+    package: 'egg-mongoose'
   },
   security: {
     enable: true,
-    package: "egg-security"
+    package: 'egg-security'
   },
   passport: {
     enable: true,
-    package: "egg-passport"
+    package: 'egg-passport'
   },
   vuessr: {
     enable: true,
-    package: "egg-view-vue-ssr"
+    package: 'egg-view-vue-ssr'
   },
   validate: {
     enable: true,
-    package: "egg-validate"
+    package: 'egg-validate'
   }
 };
 

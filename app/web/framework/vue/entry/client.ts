@@ -2,13 +2,19 @@ import Vue from 'vue';
 import '../component';
 import '../directive';
 import '../filter';
-
+import plugin from '../plugin';
+Vue.use(plugin);
 export default function(options) {
-  Vue.prototype.$http = require('axios');
+  const state = (window as any).__INITIAL_STATE__ || {};
   if (options.store) {
-    options.store.replaceState((window as any).__INITIAL_STATE__ || {});
-  } else if ((window as any).__INITIAL_STATE__) {
-    options.data = Object.assign((window as any).__INITIAL_STATE__, options.data && options.data());
+    options.store.replaceState(state);
+  } else {
+    options.data = { ...state, ...options.data };
+  }
+  const hookRender = options.hookRender || (Vue as any).hookRender;
+  if (hookRender) {
+    const context = { state };
+    hookRender(context, options);
   }
   const app = new Vue(options);
   app.$mount('#app');

@@ -1,9 +1,9 @@
-import { EggPlugin } from "egg";
+import { EggPlugin } from 'egg';
 
 const plugin: EggPlugin = {
   alinode: {
     enable: true,
-    package: "egg-alinode"
+    package: 'egg-alinode'
   }
 };
 

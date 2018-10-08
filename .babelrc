@@ -13,7 +13,13 @@
     "transform-object-rest-spread",
     "syntax-dynamic-import",
     "transform-object-assign",
-    "transform-runtime"
+    "transform-runtime",
+    ["transform-imports", {
+      "vuetify": {
+        "transform": "vuetify/es5/components/${member}",
+        "preventFullImport": true
+      }
+    }]
   ],
   "comments": false
 }

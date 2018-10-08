@@ -179,6 +179,34 @@ export default class CrawlerXmrc extends Subscription {
         .trim();
       if (genderText === '女') gender = 0;
       if (genderText === '男') gender = 1;
+      const positionNatureCont = baseDemandTable
+        .find('td:contains(职位性质：)')
+        .text()
+        .replace(/(\n|职位性质：)/g, '')
+        .trim();
+      // 1全职 2兼职 3实习 4临时
+      let positionNature: number = 0;
+      if (positionNatureCont === '全职') positionNature = 1;
+      if (positionNatureCont === '兼职') positionNature = 2;
+      if (positionNatureCont === '实习') positionNature = 3;
+      if (positionNatureCont === '临时') positionNature = 4;
+
+      const educationCont = baseDemandTable
+        .find('td:contains(学历要求：)')
+        .text()
+        .replace(/(\n|学历要求：)/g, '')
+        .trim();
+      // 1 小学 2 初中 3 高中 4 中专 5 大专 6 本科 7 硕士研究生 8 博士研究生
+      let education: number = 0;
+      if (educationCont.includes('小学')) education = 1;
+      if (educationCont.includes('初中')) education = 2;
+      if (educationCont.includes('高中')) education = 3;
+      if (educationCont.includes('中专')) education = 4;
+      if (educationCont.includes('大专')) education = 5;
+      if (educationCont.includes('本科')) education = 6;
+      if (educationCont.includes('硕士')) education = 7;
+      if (educationCont.includes('博士')) education = 8;
+
       const jobInfo: Job = {
         recruitment_positon: item.recruitment_positon,
         company_name: item.companyName,
@@ -225,17 +253,10 @@ export default class CrawlerXmrc extends Subscription {
           .text()
           .replace(/(\n|电子邮件：|本职位应聘电子邮件：)/g, '')
           .trim(),
-        education: baseDemandTable
-          .find('td:contains(学历要求：)')
-          .text()
-          .replace(/(\n|学历要求：)/g, '')
-          .trim(),
+        education,
         gender,
-        position_nature: baseDemandTable
-          .find('td:contains(职位性质：)')
-          .text()
-          .replace(/(\n|职位性质：)/g, '')
-          .trim(),
+      // 1全职 2兼职 3实习 4临时
+        position_nature: positionNature,
         language_requirement: baseDemandTable
           .find('td:contains(外语要求：)')
           .text()

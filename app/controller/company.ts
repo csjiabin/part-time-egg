@@ -1,12 +1,12 @@
-import Controller from "../extend/base_controller";
-import { Company } from "../model/company";
-import { Job } from "../model/job";
+import Controller from '../extend/base_controller';
+import { Company } from '../model/company';
+import { Job } from '../model/job';
 
 export default class CompanyController extends Controller {
   public async list() {
     const { service, body } = this;
     try {
-      const { page = 1, limit = 10, keyword = "", date } = body;
+      const { page = 1, limit = 10, keyword = '', date } = body;
       // 过滤条件
       const options = {
         sort: {
@@ -20,7 +20,7 @@ export default class CompanyController extends Controller {
       // 关键词查询
       if (keyword) {
         const keywordReg = new RegExp(keyword);
-        querys["$or"] = [
+        querys['$or'] = [
           {
             company_name: keywordReg
           },
@@ -41,7 +41,7 @@ export default class CompanyController extends Controller {
       // 时间查询
       if (date) {
         const getDate: any = new Date(date);
-        if (!Object.is(getDate.toString(), "Invalid Date")) {
+        if (!Object.is(getDate.toString(), 'Invalid Date')) {
           querys.create_at = {
             $gte: new Date((getDate / 1000 - 60 * 60 * 8) * 1000),
             $lt: new Date((getDate / 1000 + 60 * 60 * 16) * 1000)
@@ -58,7 +58,7 @@ export default class CompanyController extends Controller {
     try {
       this.success(
         await service.company.create(body),
-        "create company successfully!"
+        'create company successfully!'
       );
     } catch (error) {
       this.error(error);
@@ -71,7 +71,7 @@ export default class CompanyController extends Controller {
     } = this;
     try {
       const company: Company = await service.company.detail(id);
-      if (!company) return this.error("The company does not exist.", 404);
+      if (!company) return this.error('The company does not exist.', 404);
       const jobs: Job[] = await service.job.companyJobs(id);
       const result: any = { ...company };
       this.success({
@@ -90,8 +90,8 @@ export default class CompanyController extends Controller {
     } = this;
     try {
       const company: Company = await service.company.update(id, body);
-      if (!company) return this.error("The company does not exist.", 404);
-      this.success(company, "update company successfully!");
+      if (!company) return this.error('The company does not exist.', 404);
+      this.success(company, 'update company successfully!');
     } catch (error) {
       this.error(error);
     }
@@ -103,8 +103,8 @@ export default class CompanyController extends Controller {
     } = this;
     try {
       const result: Company = await service.company.delete(id);
-      if (!result) return this.error("The company does not exist.", 404);
-      this.success(result, "delete company successfully!");
+      if (!result) return this.error('The company does not exist.', 404);
+      this.success(result, 'delete company successfully!');
     } catch (error) {
       this.error(error);
     }

@@ -19,5 +19,13 @@ app/**/*.map
 test/**/*.map
 config/**/*.map
 
+config/buildConfig.json
 config/manifest.json
+config/manifest-dll.json
 public
+!app/public/*
+app/view/*
+!app/view/layout.html
+!app/view/README.md
+!app/view/.gitkeep
+package-lock.json
