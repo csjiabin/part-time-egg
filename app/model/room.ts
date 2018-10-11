@@ -31,7 +31,6 @@ export default (app) => {
     img: { type: String },
     isMany: { type: Boolean, default: false },
     create_at: { type: Date, default: Date.now },
-    // 最后修改日期
     update_at: { type: Date, default: Date.now }
   });
   roomSchema

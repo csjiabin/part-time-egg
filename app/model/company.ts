@@ -39,7 +39,6 @@ export default (app) => {
     industry: { type: String },
     description: { type: String },
     create_at: { type: Date, default: Date.now },
-    // 最后修改日期
     update_at: { type: Date, default: Date.now }
   });
   companySchema.set('toObject', { getters: true })

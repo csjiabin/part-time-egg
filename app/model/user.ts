@@ -27,20 +27,21 @@ export default (app) => {
   const userSchema = new Schema({
     username: { type: String },
     password: { type: String },
-    name: { type: String },
+    name: { type: String, validate: /\S+/ },
     // 头像
     gravatar: { type: String },
     gender: { type: Number, default: 2 },
     phone: { type: String },
-    email: { type: String },
+    email: {
+      type: String,
+      validate: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/
+    },
     idcard: { type: String },
-    // 发布日期
     create_at: { type: Date, default: Date.now },
-
-    // 最后修改日期
     update_at: { type: Date, default: Date.now }
   });
-  userSchema.plugin(mongoosePaginate)
+  userSchema
+    .plugin(mongoosePaginate)
     .plugin(updateOrInsertAt)
     .plugin(autoIncrement.plugin, {
       model: 'User',

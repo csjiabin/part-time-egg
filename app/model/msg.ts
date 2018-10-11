@@ -31,7 +31,6 @@ export default (app) => {
     roomid: { type: Schema.Types.ObjectId, ref: 'Room' },
     img: { type: String },
     create_at: { type: Date, default: Date.now },
-    // 最后修改日期
     update_at: { type: Date, default: Date.now }
   });
   msgSchema

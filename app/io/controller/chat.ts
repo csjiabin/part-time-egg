@@ -9,11 +9,11 @@ export default class ChatController extends Controller {
       const { roomId, receive } = message;
       socket.broadcast.emit(roomId, {
         ...message,
-        target:roomId
+        target: roomId
       });
       socket.broadcast.emit(receive, {
         ...message,
-        target:receive
+        target: receive
       });
     } catch (error) {
       this.app.logger.error(error);
