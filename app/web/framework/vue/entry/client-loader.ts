@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function clientLoader() {
   this.cacheable();
   return `
     import Vue from 'vue';

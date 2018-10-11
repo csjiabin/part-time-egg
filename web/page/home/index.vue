@@ -36,9 +36,6 @@
     </div>
   </Layout>
 </template>
-<style>
-  @import "index.css";
-</style>
 <script type="ts">
   export default {
     components: {

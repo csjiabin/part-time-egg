@@ -1,10 +1,6 @@
 
-import Vue from 'vue';
-import Vuex from 'vuex';
 import request from '../../../../../framework/network/request';
 import * as Type from './mutation-type';
-
-Vue.use(Vuex);
 
 const actions = {
 

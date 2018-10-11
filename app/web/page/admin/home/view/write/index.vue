@@ -11,7 +11,7 @@
       </el-row>
     </div>
     <div class="editor-container" v-if="isShowEditor">
-      <markdown-editor id="contentEditor" ref="contentEditor" v-model="article.content" :height="500" :zIndex="20"></markdown-editor>
+      <!-- <markdown-editor id="contentEditor" ref="contentEditor" v-model="article.content" :height="500" :zIndex="20"></markdown-editor> -->
     </div>
   </div>
 </template>
@@ -20,11 +20,13 @@
   width: 100%;
 }
 </style>
-<script type="babel">
+<script type="text/babel">
 import { SET_SAVE_ARTICLE } from '../../store/app/mutation-type';
+// import MarkdownEditor from 'component/MarkdownEditor/index.vue'
+import ShowDown from 'showdown'
 export default {
   components: {
-    MarkdownEditor: () => import("component/MarkdownEditor/index.vue")
+    // MarkdownEditor
   },
   data() {
     return {
@@ -40,7 +42,7 @@ export default {
   computed: {},
   methods: {
      markdown2Html() {
-      import('showdown').then(showdown => {
+      ShowDown.then(showdown => {
         const converter = new showdown.Converter()
         this.article.html = converter.makeHtml(this.content)
       })

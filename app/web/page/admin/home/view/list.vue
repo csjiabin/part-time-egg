@@ -23,8 +23,8 @@
       </el-table-column>
       <el-table-column prop="title" label="标题">
         <template slot-scope="props">
-          <router-link :to="'/article/detail/'+ props.row.id">{{props.row.title}}</router-link>
-        </template>
+              <router-link :to="'/article/detail/'+ props.row.id">{{props.row.title}}</router-link>
+</template>
         </el-table-column>
         <el-table-column
           prop="hits"
@@ -188,10 +188,10 @@
         ];
       },
       total() {
-        return this.$store.state.articleTotal;
+        return this.$store.getters.articleTotal;
       },
       articleList() {
-        return this.$store.state.articleList;
+        return this.$store.state.articleList || [];
       }
     },
     beforeMount() {

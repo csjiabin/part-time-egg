@@ -27,4 +27,7 @@ export default class UserService extends Service {
       throw error;
     }
   }
+  async say() {
+    return 'Hello Man!';
+  }
 }

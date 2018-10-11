@@ -12,4 +12,8 @@ export default function updateOrInsert(schema) {
       throw error;
     }
   };
+  schema.pre('findOneAndUpdate', function preFindOneAndUpdate(next) {
+    this.findOneAndUpdate({}, { update_at: Date.now() });
+    next();
+  });
 }

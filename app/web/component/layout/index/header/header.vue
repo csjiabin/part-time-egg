@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">IBlog</a>
+                <a class="navbar-brand" href="/">egg</a>
             </div>
             <div class="collapse navbar-collapse" :class="{ 'collapse in': collapsed }" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -31,9 +31,9 @@
                         <div>
                             <img src="../../../../asset/images/loading.gif" width="80px" height="80px" style="display: inline">
                         </div>
-                        <h1>博客</h1>
+                        <h1>HOME</h1>
                         <hr class="large">
-                        <span class="subheading">IBlog</span>
+                        <span class="subheading">egg</span>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 import * as autoIncrement from 'mongoose-auto-increment';
 import * as mongoosePaginate from 'mongoose-paginate-v2';
-import mongoUpdateAt from '../libs/mongo_update_at';
+import updateOrInsertAt from '../libs/mongo/update_or_insert';
 
 export interface User extends Document {
   _id?: string;
@@ -41,7 +41,7 @@ export default (app) => {
     update_at: { type: Date, default: Date.now }
   });
   userSchema.plugin(mongoosePaginate)
-    .plugin(mongoUpdateAt)
+    .plugin(updateOrInsertAt)
     .plugin(autoIncrement.plugin, {
       model: 'User',
       field: 'id',

@@ -9,6 +9,7 @@ export default () => {
         options: {}
       }
     },
+    // 阿里云 node性能平台
     alinode: {
       // 从 `Node.js 性能平台` 获取对应的接入参数
       appid: '76159',

@@ -35,10 +35,10 @@ export default class CrawlerXmrc extends Subscription {
     this.task(1);
   }
   async task(page: number = 1) {
-    console.log('crawler page:', page, new Date());
+    this.app.logger.info('crawler page: ', page);
     const jobs: any = await this.getJobsList(page);
     const jobsList: any[] = jobs.jobsList || [];
-    const allPage: number = 15;
+    const allPage: number = 10;
     for (const item of jobsList) {
       sleep(5);
       await this.getJobDetail(item);
@@ -46,7 +46,7 @@ export default class CrawlerXmrc extends Subscription {
     if (allPage > 1 && allPage > page) {
       await this.task(page + 1);
     } else {
-      console.log('crawler end time:', new Date());
+      this.app.logger.info('crawler end time: ', new Date());
     }
   }
   query(search: string = ''): any {
@@ -76,7 +76,7 @@ export default class CrawlerXmrc extends Subscription {
       PageIndex: page
     };
     const jobsQuerys = qs.stringify(querys);
-    console.log(`${this.xmrcUri}/net/info/Resultg.aspx?${jobsQuerys}`);
+    // console.log(`${this.xmrcUri}/net/info/Resultg.aspx?${jobsQuerys}`);
     try {
       const html = await nightmare
         .goto(`${this.xmrcUri}/net/info/Resultg.aspx?${jobsQuerys}`)
@@ -130,12 +130,13 @@ export default class CrawlerXmrc extends Subscription {
       this.list.concat(jobsList);
       return { jobsList, allPage };
     } catch (error) {
-      console.log('error', error);
+      // console.log('error', error);
+      this.app.logger.error(error);
     }
   }
   async getJobDetail(item) {
     try {
-      console.log(`${this.xmrcUri}${item.uri}`, new Date());
+      // console.log(`${this.xmrcUri}${item.uri}`, new Date());
       const html = await nightmare
         .goto(`${this.xmrcUri}${item.uri}`)
         .wait('div#container')
@@ -357,7 +358,7 @@ export default class CrawlerXmrc extends Subscription {
         );
       }
     } catch (error) {
-      console.log('error', error);
+      this.app.logger.error(error);
     }
   }
 }

@@ -5,6 +5,7 @@ import 'egg'; // Make sure ts to import egg declaration at first
 import Company from '../../../app/controller/company';
 import Home from '../../../app/controller/home';
 import Job from '../../../app/controller/job';
+import Robot from '../../../app/controller/robot';
 import Upload from '../../../app/controller/upload';
 import User from '../../../app/controller/user';
 import AboutAbout from '../../../app/controller/about/about';
@@ -18,6 +19,7 @@ declare module 'egg' {
     company: Company;
     home: Home;
     job: Job;
+    robot: Robot;
     upload: Upload;
     user: User;
     about: {

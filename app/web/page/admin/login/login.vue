@@ -3,7 +3,7 @@
     <div class="login-form">
       <div class="login-header">
         <img src="../../../asset/images/logo.png" height="100" alt="">
-        <p>IBlog</p>
+        <p>{{ message }}</p>
       </div>
       <div class="login-info">
         <el-input
@@ -32,7 +32,21 @@
         <el-checkbox class="login-remember" v-model="remenber">记住密码</el-checkbox>
         <a href="javascript:;" style="float: right;color: #3C8DBC;font-size: 14px">注册</a>
       </div>
+        <form method="post" action="/passport/local">
+          <div>
+            <label>Username:</label>
+            <input type="text" name="username" />
+          </div>
+          <div>
+            <label>Password:</label>
+            <input type="password" name="password" />
+          </div>
+          <div>
+            <input type="submit" value="Log In" />
+          </div>
+        </form>
     </div>
+    
 </div>
 </template>
 

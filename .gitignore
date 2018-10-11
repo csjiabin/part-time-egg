@@ -4,7 +4,6 @@ node_modules/
 coverage/
 .idea/
 run/
-logs/
 .DS_Store
 .vscode
 *.swp
@@ -22,7 +21,7 @@ config/**/*.map
 config/buildConfig.json
 config/manifest.json
 config/manifest-dll.json
-public
+public/*
 !app/public/*
 app/view/*
 !app/view/layout.html

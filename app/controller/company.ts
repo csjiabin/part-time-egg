@@ -20,7 +20,7 @@ export default class CompanyController extends Controller {
       // 关键词查询
       if (keyword) {
         const keywordReg = new RegExp(keyword);
-        querys['$or'] = [
+        querys.$or = [
           {
             company_name: keywordReg
           },

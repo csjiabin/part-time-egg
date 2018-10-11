@@ -1,11 +1,12 @@
 'use strict';
-// import axios from 'axios';
 import VueI18n from 'vue-i18n';
+import Vuetify from 'vuetify';
 import createI18n from '../../i18n/site';
 import request from '../../network/request';
 
 export default {
   install(Vue) {
+    Vue.use(Vuetify);
     if (!Vue.prototype.hasOwnProperty('$request')) {
       Vue.prototype.$request = request;
     }

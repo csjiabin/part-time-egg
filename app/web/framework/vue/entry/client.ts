@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueSocketio from 'vue-socket.io';
 import '../component';
 import '../directive';
 import '../filter';
@@ -15,6 +16,7 @@ export default function(options) {
   if (hookRender) {
     const context = { state };
     hookRender(context, options);
+    Vue.use(VueSocketio, document.location.origin);
   }
   const app = new Vue(options);
   app.$mount('#app');

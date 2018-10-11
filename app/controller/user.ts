@@ -5,8 +5,7 @@ import { User } from '../model/user';
 export default class UserController extends Controller {
   public async index() {
     const data = { name: 'egg' };
-    // await this.ctx.render("user", data);
-    return data;
+    this.success(data);
   }
   public async login() {
     const { ctx, service, body } = this;
@@ -20,23 +19,29 @@ export default class UserController extends Controller {
         return this.error('The password does not exist.');
       ctx.session.user = `${user._id}`;
       if (rememberMe) ctx.session.maxAge = ms('30d');
-      console.log(ctx.session);
       this.success(user);
     } catch (error) {
       this.error(error);
     }
   }
   public logout() {
-    try {
+    const {ctx} = this;
+    if (ctx.isAuthenticated()) {
       this.ctx.session.user = null;
+      ctx.logout();
+      ctx.redirect(ctx.get('referer') || '/');
       this.success();
-    } catch (error) {
-      this.error(error);
+    } else {
+      ctx.session.returnTo = ctx.path;
+      ctx.redirect('/login');
     }
+
   }
   public async register() {
-    const { service, body } = this;
-    const { username, password } = body;
+    const {
+      service,
+      body: { username, password }
+    } = this;
     const user = await service.user.find({
       username
     });
@@ -49,8 +54,10 @@ export default class UserController extends Controller {
   }
 
   public async update() {
-    const { service, body } = this;
-    const { id, username, password } = body;
+    const {
+      service,
+      body: { id, username, password }
+    } = this;
     if (!id) return this.error('The id does not exist.');
     const findUser: User = await service.user.find({ username });
     if (findUser && findUser.id !== id)

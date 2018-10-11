@@ -9,5 +9,7 @@ import 'egg-alinode';
 import 'egg-mongoose';
 import 'egg-security';
 import 'egg-passport';
+import 'egg-passport-local';
 import 'egg-view-vue-ssr';
-import 'egg-validate';
+import 'egg-socket.io';
+import 'egg-router-plus';

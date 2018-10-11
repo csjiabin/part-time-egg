@@ -33,6 +33,7 @@
   ],
   "exclude": [
     "public",
+    "web",
     "app/web",
     "app/public",
     "app/view",

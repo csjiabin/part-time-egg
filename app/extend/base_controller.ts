@@ -1,10 +1,12 @@
 import { Controller } from 'egg';
+
 export default class BaseController extends Controller {
   request: any = this.ctx.request;
   body = this.ctx.request.body;
   params = this.ctx.params;
   query = this.ctx.query;
   queries = this.ctx.queries;
+  socket = this.ctx.socket;
   get user() {
     return this.ctx.session.user;
   }

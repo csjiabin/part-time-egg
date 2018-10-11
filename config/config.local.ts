@@ -10,6 +10,7 @@ const domainWhiteList: string[] = [];
 });
 export default (appInfo: EggAppInfo) => {
   const config: PowerPartial<EggAppConfig> = {
+    // mongo配置
     mongoose: {
       client: {
         url: 'mongodb://hjbnice.com/parttime',

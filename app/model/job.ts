@@ -1,8 +1,7 @@
 import { Document } from 'mongoose';
 import * as autoIncrement from 'mongoose-auto-increment';
 import * as mongoosePaginate from 'mongoose-paginate-v2';
-import mongoUpdateAt from '../libs/mongo_update_at';
-import updateOrInsertAt from '../libs/update_or_insert';
+import updateOrInsertAt from '../libs/mongo/update_or_insert';
 import { Company } from './company';
 
 export interface Job extends Document {
@@ -77,7 +76,6 @@ export default (app) => {
     .set('toObject', { getters: true })
     .plugin(mongoosePaginate)
     .plugin(updateOrInsertAt)
-    .plugin(mongoUpdateAt)
     .plugin(autoIncrement.plugin, {
       model: 'Job',
       field: 'id',

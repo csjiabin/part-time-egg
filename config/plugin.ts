@@ -18,13 +18,25 @@ const plugin: EggPlugin = {
     enable: true,
     package: 'egg-passport'
   },
+  passportLocal: {
+    enable: true,
+    package: 'egg-passport-local'
+  },
   vuessr: {
     enable: true,
     package: 'egg-view-vue-ssr'
   },
   validate: {
-    enable: true,
+    enable: false,
     package: 'egg-validate'
+  },
+  io: {
+    enable: true,
+    package: 'egg-socket.io'
+  },
+  routerPlus: {
+    enable: true,
+    package: 'egg-router-plus'
   }
 };
 

@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -7,17 +6,13 @@ import getters from './getters';
 import mutations from './mutations';
 
 Vue.use(Vuex);
-
-export default function createStore() {
-  const state = {
+export default new Vuex.Store({
+  state: {
     articleTotal: 0,
     articleList: [],
     article: {}
-  };
-  return new Vuex.Store({
-    state,
-    actions,
-    getters,
-    mutations
-  });
-}
+  },
+  actions,
+  getters,
+  mutations
+});
