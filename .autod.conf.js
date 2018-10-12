@@ -12,6 +12,9 @@ module.exports = {
   dep: [
     'egg',
     'egg-scripts',
+    'egg-alinode',
+    'egg-validate',
+    'egg-socket.io'
   ],
   devdep: [
     'autod',
