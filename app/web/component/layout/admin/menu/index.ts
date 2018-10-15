@@ -19,6 +19,11 @@ const menu = {
         path: '/article/add'
       }
     }
+  },
+  company: {
+    name: 'menu.company',
+    path: '/company/list',
+    icon: 'el-icon-menu',
   }
 };
 

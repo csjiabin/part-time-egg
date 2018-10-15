@@ -1,11 +1,13 @@
 import Vue from 'vue';
 
 import VueRouter from 'vue-router';
+import CompanyList from '../view/company/list.vue';
 import Dashboard from '../view/dashboard/index.vue';
 import ArticleDetail from '../view/detail.vue';
 import ArticleList from '../view/list.vue';
 import Notfound from '../view/notfound.vue';
 import ArticleAdd from '../view/write/index.vue';
+
 Vue.use(VueRouter);
 const router = new VueRouter({
   mode: 'history',
@@ -26,6 +28,10 @@ const router = new VueRouter({
     {
       path: '/article/detail/:id',
       component: ArticleDetail
+    },
+    {
+      path: '/company/list',
+      component: CompanyList
     },
     {
       path: '*',
