@@ -10,9 +10,7 @@ export default function render(options) {
       options.store.replaceState({ ...options.store.state, ...context.state });
       options.router.push({ path: context.state.url });
       const matchedComponents = options.router.getMatchedComponents();
-      if (!matchedComponents) {
-        return Promise.reject({ code: '404' });
-      }
+      if (!matchedComponents) return Promise.reject({ code: '404' });
       return Promise.all(
         matchedComponents.map((component) => {
           if (component.methods && component.methods.fetchApi) {

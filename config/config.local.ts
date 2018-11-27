@@ -13,7 +13,7 @@ export default (appInfo: EggAppInfo) => {
     // mongo配置
     mongoose: {
       client: {
-        url: 'mongodb://hjbnice.com/parttime',
+        url: 'mongodb://localhost:27017/parttime',
         options: {}
       }
     },

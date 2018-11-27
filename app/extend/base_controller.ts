@@ -6,7 +6,7 @@ export default class BaseController extends Controller {
   params = this.ctx.params;
   query = this.ctx.query;
   queries = this.ctx.queries;
-  socket = this.ctx.socket;
+  socket:any = this.ctx.socket;
   get user() {
     return this.ctx.session.user;
   }
@@ -14,19 +14,24 @@ export default class BaseController extends Controller {
   success(data?: any, message?: string) {
     this.ctx.body = {
       success: true,
+      data,
       message: message || 'request successfully!',
-      data
+      status: 200
     };
   }
-  error(message: string, code?: number) {
-    this.ctx.status = code || 400;
+  error(message: string, status?: number) {
+    status = status || 400;
+    this.ctx.status = status;
     this.ctx.body = {
       success: false,
-      message
+      message: message || 'request fail!',
+      status
     };
   }
   notFound(msg) {
     msg = msg || 'not found';
-    this.ctx.throw(404, msg);
+    this.error('Not Found', 404);
+    // this.ctx.throw(404, msg);
+    this.app.logger.error(msg);
   }
 }

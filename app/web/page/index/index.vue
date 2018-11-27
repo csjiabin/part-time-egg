@@ -57,7 +57,7 @@
           context: new Date(),
           user,
           receive: user == 'admin' ? 'root' : 'admin',
-          roomId: "room110"
+          roomId: "system"
         })
       },
       async fetch() {
@@ -98,12 +98,12 @@
       const {
         user
       } = this.query
-      this.$options.sockets[user] = (msg) => {
+      this.$options.sockets[user] = msg => {
         console.log(msg)
       }
-      this.$options.sockets['room110'] = (msg) => {
-        this.msg.push(`${msg.user} send: ${msg.context}`)
-        console.log(msg)
+      this.$options.sockets['system'] = msg => {
+        this.msg.push(`system push msg ${msg.user} send: ${msg.context}`)
+        console.log(msg,'system')
       }
     }
   }
