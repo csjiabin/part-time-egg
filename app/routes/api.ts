@@ -94,6 +94,7 @@ export default (app) => {
    * @param {String} text 文本
    */
   apiRouter.get('/robot', controller.robot.index);
+  /** 404 */
   apiRouter.get('*', controller.robot.notFound);
 
 };

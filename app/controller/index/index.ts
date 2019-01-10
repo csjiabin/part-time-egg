@@ -3,10 +3,11 @@ import * as Model from '../../mocks/article/list';
 
 export default class IndexController extends Controller {
   async index() {
-    const {query} = this;
-    await this.ctx.render('index/index.js', {
-      query
-    });
+    // const {query} = this;
+    // await this.ctx.render('index/index.js', {
+    //   query
+    // });
+    this.success(null, 'index');
   }
 
   async client() {

@@ -33,9 +33,8 @@ export default class UserController extends Controller {
       this.success();
     } else {
       ctx.session.returnTo = ctx.path;
-      ctx.redirect('/login');
+      ctx.redirect('/');
     }
-
   }
   public async register() {
     const {

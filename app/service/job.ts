@@ -1,16 +1,16 @@
 import { Service } from 'egg';
-import { Job } from '../model/job';
+import { Job as JobModel, JobAll } from '../model/job';
 export default class JobService extends Service {
-  public async find(option: Job): Promise<Job> {
+  public async find(option: JobModel): Promise<JobModel> {
     const { Job } = this.ctx.model;
     try {
-      const job: Job = await Job.findOne(option);
+      const job: JobModel = await Job.findOne(option);
       return job;
     } catch (error) {
       throw error;
     }
   }
-  public async findAll(querys, options): Promise<any> {
+  public async findAll(querys, options): Promise<JobAll> {
     const { Job } = this.ctx.model;
     try {
       const result = await Job.paginate(querys, options);
@@ -24,48 +24,48 @@ export default class JobService extends Service {
       throw error;
     }
   }
-  public async create(option: Job): Promise<Job> {
+  public async create(option: JobModel): Promise<JobModel> {
     const { Job } = this.ctx.model;
     try {
-      const job: Job = await new Job(option).save();
+      const job: JobModel = await new Job(option).save();
       return job;
     } catch (error) {
       throw error;
     }
   }
-  public async update(_id: string, option: Job): Promise<Job> {
+  public async update(_id: string, option: JobModel): Promise<JobModel> {
     const { Job } = this.ctx.model;
     delete option.create_at;
     delete option.update_at;
     try {
-      const job: Job = await Job.findOneAndUpdate({ _id }, option);
+      const job: JobModel = await Job.findOneAndUpdate({ _id }, option);
       return job;
     } catch (error) {
       throw error;
     }
   }
-  public async detail(_id): Promise<Job> {
+  public async detail(_id): Promise<JobModel> {
     const { Job } = this.ctx.model;
     try {
-      const detail: Job = await Job.findById(_id).populate('company');
+      const detail: JobModel = await Job.findById(_id).populate('company');
       return detail;
     } catch (error) {
       throw error;
     }
   }
-  public async delete(_id): Promise<Job> {
+  public async delete(_id): Promise<JobModel> {
     const { Job } = this.ctx.model;
     try {
-      const result: Job = await Job.findByIdAndRemove(_id);
+      const result: JobModel = await Job.findByIdAndRemove(_id);
       return result;
     } catch (error) {
       throw error;
     }
   }
-  public async companyJobs(id): Promise<Job[]> {
+  public async companyJobs(id): Promise<JobModel[]> {
     const { Job } = this.ctx.model;
     try {
-      const result: Job[] = await Job.find({
+      const result: JobModel[] = await Job.find({
         company: id,
         term_end: {
           $gte: new Date()

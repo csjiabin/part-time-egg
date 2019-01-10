@@ -3,6 +3,7 @@ import * as autoIncrement from 'mongoose-auto-increment';
 import * as mongoosePaginate from 'mongoose-paginate-v2';
 import updateOrInsertAt from '../libs/mongo/update_or_insert';
 import { User } from './user';
+
 export interface Comment extends Document {
   _id?: string;
   id?: number;

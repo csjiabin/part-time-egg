@@ -5,7 +5,7 @@ export default () => {
     // keys: appInfo.name + "_1538649931215_6001",
     mongoose: {
       client: {
-        url: 'mongodb://127.0.0.1/parttime',
+        url: 'mongodb://127.0.0.1:27017/parttime',
         options: {}
       }
     },

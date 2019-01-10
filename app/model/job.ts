@@ -3,7 +3,7 @@ import * as autoIncrement from 'mongoose-auto-increment';
 import * as mongoosePaginate from 'mongoose-paginate-v2';
 import updateOrInsertAt from '../libs/mongo/update_or_insert';
 import { Company } from './company';
-
+import MongoPaginate from './mongoPaginate';
 export interface Job extends Document {
   id?: number;
   recruitment_positon?: string;
@@ -33,8 +33,10 @@ export interface Job extends Document {
   create_at?: Date;
   update_at?: Date;
 }
-
-export default (app) => {
+export interface JobAll extends MongoPaginate {
+  list: Job[];
+}
+export default app => {
   const mongoose = app.mongoose;
   const connection = mongoose.connection;
   // 自增ID初始化

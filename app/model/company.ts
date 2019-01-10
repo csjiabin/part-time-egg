@@ -3,6 +3,8 @@ import * as autoIncrement from 'mongoose-auto-increment';
 import * as mongoosePaginate from 'mongoose-paginate-v2';
 import updateOrInsertAt from '../libs/mongo/update_or_insert';
 import { Job } from './job';
+import MongoPaginate from './mongoPaginate';
+
 export interface Company extends Document {
   _id?: string;
   id?: number;
@@ -20,7 +22,9 @@ export interface Company extends Document {
   update_at?: Date;
   jobs?: Job[];
 }
-
+export interface CompanyAll extends MongoPaginate{
+  list: Company[];
+}
 export default (app) => {
   const mongoose = app.mongoose;
   const connection = mongoose.connection;

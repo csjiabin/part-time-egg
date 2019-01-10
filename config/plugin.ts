@@ -2,10 +2,10 @@ import { EggPlugin } from 'egg';
 
 const plugin: EggPlugin = {
   // static: true,
-  // nunjucks: {
-  //   enable: true,
-  //   package: 'egg-view-nunjucks',
-  // },
+  nunjucks: {
+    enable: true,
+    package: 'egg-view-nunjucks',
+  },
   mongoose: {
     enable: true,
     package: 'egg-mongoose'
@@ -21,10 +21,6 @@ const plugin: EggPlugin = {
   passportLocal: {
     enable: true,
     package: 'egg-passport-local'
-  },
-  vuessr: {
-    enable: true,
-    package: 'egg-view-vue-ssr'
   },
   validate: {
     enable: false,

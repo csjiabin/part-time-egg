@@ -1,0 +1,33 @@
+version: "3.5"
+
+services:
+  part-time-egg:
+    image: part-time-egg
+    build: ../
+    container_name: "part-time-egg"
+    links:
+      - mongo
+    ports:
+      - 6001:7001
+    volumes:
+      - .:/usr/src/app
+    
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - 27017:27017
+  # umi-antd-app_web:
+  #   image: nginx
+  #   ports:
+  #     - 8881:8881
+  #   container_name: "umi-antd-app_web"
+  #   restart: unless-stopped
+  #   volumes:
+  #     - dist:/usr/share/nginx/html/umi-antd-app:ro
+  #     - ./nginx.conf:/etc/nginx/conf.d/umi-antd-app.conf
+
+# volumes:
+#   dist:

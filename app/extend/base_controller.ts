@@ -1,32 +1,38 @@
 import { Controller } from 'egg';
-
+interface ResultCtx {
+  success: boolean;
+  data?: any;
+  message: string;
+  status: number;
+}
 export default class BaseController extends Controller {
   request: any = this.ctx.request;
   body = this.ctx.request.body;
   params = this.ctx.params;
   query = this.ctx.query;
   queries = this.ctx.queries;
-  socket:any = this.ctx.socket;
+  socket: any = this.ctx.socket;
   get user() {
     return this.ctx.session.user;
   }
 
   success(data?: any, message?: string) {
-    this.ctx.body = {
+    const result: ResultCtx = {
       success: true,
       data,
-      message: message || 'request successfully!',
+      message: message || 'successfully!',
       status: 200
     };
+    this.ctx.body = result;
   }
   error(message: string, status?: number) {
-    status = status || 400;
-    this.ctx.status = status;
-    this.ctx.body = {
-      success: false,
-      message: message || 'request fail!',
-      status
+    const result: ResultCtx = {
+      success: true,
+      message: message || 'fail!',
+      status: status || 400
     };
+    this.ctx.status = result.status;
+    this.ctx.body = result;
   }
   notFound(msg) {
     msg = msg || 'not found';

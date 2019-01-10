@@ -47,18 +47,17 @@ export default (appInfo: EggAppInfo) => {
   // 模板
   config.view = {
     // 模板路径缓存，默认开启
-    cache: false
+    cache: false,
+    mapping: {
+      '.nj': 'nunjucks',
+      'defaultViewEngine': 'nunjucks',
+      'defaultExtension': '.nj'
+    }
   };
   config.siteFile = {
     '/favicon.ico': fs.readFileSync(
       join(appInfo.baseDir, 'app/public/favicon.ico')
     )
-  };
-  config.vuessr = {
-    layout: join(appInfo.baseDir, 'app/web/view/layout.html'),
-    renderOptions: {
-      basedir: join(appInfo.baseDir, 'app/view')
-    }
   };
   config.logger = {
     consoleLevel: 'DEBUG',
